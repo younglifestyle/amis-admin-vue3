@@ -1,11 +1,11 @@
 import React from 'react';
-import { Editor, ShortcutKey } from 'amis-editor';
-import { inject, observer } from 'mobx-react';
-import { RouteComponentProps } from 'react-router-dom';
-import { toast, Select } from 'amis';
-import { currentLocale } from 'i18n-runtime';
-import { Icon } from '../icons/index';
-import { IMainStore } from '../../../../store';
+import {Editor, ShortcutKey} from 'amis-editor';
+import {inject, observer} from 'mobx-react';
+import {RouteComponentProps} from 'react-router-dom';
+import {Select, toast} from 'amis';
+import {currentLocale} from 'i18n-runtime';
+import {Icon} from '../icons/index';
+import {IMainStore} from '../../../../store';
 import '../editor/DisabledEditorPlugin'; // 用于隐藏一些不需要的Editor预置组件
 import '../renderer/MyRenderer';
 import '../editor/MyRenderer';
@@ -25,6 +25,8 @@ if (/^\/amis-editor-demo/.test(window.location.pathname)) {
 
 const schemaUrl = `${host}/schema.json`;
 
+console.log("schemaUrl在这里: ", schemaUrl);
+
 const editorLanguages = [
   {
     label: '简体中文',
@@ -40,11 +42,11 @@ const editorLanguages = [
 
 export default inject('store')(
   observer(function ({
-    store,
-    location,
-    history,
-    match
-  }: { store: IMainStore } & RouteComponentProps<{ id: string }>): any {
+                       store,
+                       location,
+                       history,
+                       match
+                     }: { store: IMainStore } & RouteComponentProps<{ id: string }>): any {
     const index: number = parseInt(match.params.id, 10);
     const curLanguage = currentLocale(); // 获取当前语料类型
 
@@ -82,27 +84,27 @@ export default inject('store')(
             <div className="Editor-view-mode-group">
               <div
                 className={`Editor-view-mode-btn editor-header-icon ${!store.isMobile ? 'is-active' : ''
-                  }`}
+                }`}
                 onClick={() => {
                   store.setIsMobile(false);
                 }}
               >
-                <Icon icon="pc-preview" title="PC模式" />
+                <Icon icon="pc-preview" title="PC模式"/>
               </div>
               <div
                 className={`Editor-view-mode-btn editor-header-icon ${store.isMobile ? 'is-active' : ''
-                  }`}
+                }`}
                 onClick={() => {
                   store.setIsMobile(true);
                 }}
               >
-                <Icon icon="h5-preview" title="移动模式" />
+                <Icon icon="h5-preview" title="移动模式"/>
               </div>
             </div>
           </div>
           <div className="Editor-header-actions">
             {/*  @ts-ignore   */}
-            <ShortcutKey />
+            <ShortcutKey/>
             <Select
               className='margin-left-space'
               options={editorLanguages}
@@ -112,7 +114,7 @@ export default inject('store')(
             />
             <div
               className={`header-action-btn m-1 ${store.preview ? 'primary' : ''
-                }`}
+              }`}
               onClick={() => {
                 store.setPreview(!store.preview);
               }}
@@ -141,7 +143,7 @@ export default inject('store')(
             onSave={save}
             className="is-fixed"
             $schemaUrl={schemaUrl}
-            iframeUrl={iframeUrl}
+            // iframeUrl={iframeUrl}
             showCustomRenderersPanel={true}
             amisEnv={{
               fetcher: store.fetcher,

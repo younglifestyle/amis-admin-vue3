@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import ReactDom from 'react-dom';
-import { mountInIframe } from 'amis-editor';
+// import ReactDom from 'react-dom';
+// import { mountInIframe } from 'amis-editor';
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/css/v4-shims.css'
 import 'amis/sdk/sdk.js';
@@ -21,9 +21,9 @@ export default class MobileEditor extends React.Component {
   }
 
   // 等同于vue的mounted方法
-  componentDidMount() {
-    mountInIframe(document.getElementById('mobile-editor') as HTMLElement, ReactDom);
-  }
+  // componentDidMount() {
+  //   mountInIframe(document.getElementById('mobile-editor') as HTMLElement, ReactDom);
+  // }
   render() {
     return (
       <div id="mobile-editor" className="app-wrapper"></div>

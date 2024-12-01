@@ -1,4 +1,4 @@
-import { registerEditorPlugin, BasePlugin, RendererEventContext, SubRendererInfo, BasicSubRenderInfo, PluginInterface } from 'amis-editor';
+import {BasePlugin, BasicSubRenderInfo, registerEditorPlugin, RendererEventContext, SubRendererInfo} from 'amis-editor';
 
 
 /**
